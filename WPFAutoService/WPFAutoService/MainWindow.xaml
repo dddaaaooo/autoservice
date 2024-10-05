@@ -1,0 +1,35 @@
+﻿<Window x:Class="WPFAutoService.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFAutoService"
+        mc:Ignorable="d"
+        Icon="Resources/service_logo.ico"
+        Title="Поломка" MinHeight="500" MinWidth="1100"
+        FontFamily="Tw Cen MT"
+        FontSize="14">
+    <Border BorderThickness="3" BorderBrush="#FFFF9A1A" CornerRadius="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="9*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Background="#FFFFFFE1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="1" Source="Resources/service_logo.png" Width="35" HorizontalAlignment="Right" Margin="0,3,5,3"/>
+                    <Button Grid.Column="0" x:Name="btnBack" Content="&lt;" Height="25" Width="40" HorizontalAlignment="Left" Margin="3,0,0,0" Click="btnBack_Click" Background="#FFFF9A1A"/>
+                </Grid>
+            </StackPanel>
+            <Frame Grid.Row="1" x:Name="frame" Height="auto" Width="auto" ContentRendered="frame_ContentRendered" NavigationUIVisibility="Hidden"/>
+            <StackPanel Grid.Row="2" Background="#FFFFFFE1" Height="auto" Width="auto">
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

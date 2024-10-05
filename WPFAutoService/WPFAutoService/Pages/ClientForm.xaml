@@ -1,0 +1,77 @@
+﻿<Window x:Class="WPFAutoService.Pages.ClientForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFAutoService.Pages"
+        mc:Ignorable="d"
+        Title="Добавление/изменение клиента" MinHeight="600" MaxHeight="600" MinWidth="400" MaxWidth="400" Icon="/Resources/service_logo.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="0">
+        <StackPanel Margin="10">
+            <TextBlock x:Name="IDTextBlock" Text="ID:" FontWeight="Bold" Margin="0,0,0,3" Visibility="Hidden"/>
+            <TextBox x:Name="IDTextBox" IsReadOnly="True" Padding="5" BorderThickness="1" BorderBrush="#888" Visibility="Hidden"/>
+            
+            <TextBlock Text="Имя:" FontWeight="Bold" Margin="0,0,0,3"/>
+            <TextBox x:Name="FirstNameTextBox" MaxLength="50" Padding="5" BorderThickness="1" BorderBrush="#888" />
+
+            <TextBlock Text="Фамилия:" FontWeight="Bold" Margin="0,5,0,3" />
+            <TextBox x:Name="LastNameTextBox" MaxLength="50" Padding="5" BorderThickness="1" BorderBrush="#888" />
+
+            <TextBlock Text="Отчество:" FontWeight="Bold" Margin="0,5,0,3" />
+            <TextBox x:Name="PatronymicTextBox" MaxLength="50" Padding="5" BorderThickness="1" BorderBrush="#888" />
+
+            <TextBlock Text="Email:" FontWeight="Bold" Margin="0,5,0,3" />
+            <TextBox x:Name="EmailTextBox" Padding="5" BorderThickness="1" BorderBrush="#888" />
+
+            <TextBlock Text="Телефон:" FontWeight="Bold" Margin="0,5,0,3" />
+            <TextBox x:Name="PhoneTextBox" Padding="5" BorderThickness="1" BorderBrush="#888" />
+
+            <TextBlock Text="Дата рождения:" FontWeight="Bold" Margin="0,5,0,3" />
+            <DatePicker x:Name="BirthDatePicker" Padding="5" BorderThickness="1" BorderBrush="#888" />
+
+            <TextBlock Text="Пол:" FontWeight="Bold" Margin="0,5,0,3" />
+            <StackPanel Orientation="Horizontal">
+                    <RadioButton x:Name="MaleRadioButton" Content="Мужской" GroupName="Gender" Margin="5,0" />
+                <RadioButton x:Name="FemaleRadioButton" Content="Женский" GroupName="Gender" Margin="5,0" />
+            </StackPanel>
+
+            <TextBlock Text="Фото:" FontWeight="Bold" Margin="0,5,0,3" />
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="Выбрать фото" Click="SelectPhotoButton_Click" HorizontalAlignment="Center" Padding="5" Height="30" Width="90" VerticalAlignment="Center"  Background="#FFFF9A1A" Foreground="White" BorderBrush="Transparent" />
+                        <Image Grid.Column="1" x:Name="PhotoPreview" Width="100" Height="100" Stretch="Uniform" Margin="50,5,0,0" />
+                    </Grid>
+                </StackPanel>
+                <TextBlock Text="Теги:" FontWeight="Bold" Margin="0,5,0,3" />
+                <StackPanel>
+                    <ComboBox x:Name="TagComboBox" Margin="0,0,0,5" BorderBrush="#888" ItemsSource="{Binding}" SelectionChanged="TagComboBox_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Title}"></TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <ListBox x:Name="TagsListBox" Height="100" Padding="5" BorderThickness="1" BorderBrush="#888" />
+
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <Button Content="Add Tag" Click="AddTagButton_Click" Margin="0,0,5,0" Padding="5" Background="#FFFF9A1A" Foreground="White" />
+                        <Button Content="Remove Tag" Click="RemoveTagButton_Click" Padding="5" Background="#F44336" Foreground="White" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+    </ScrollViewer>
+
+        <Button Content="Сохранить" Click="SaveButton_Click" Margin="10" Grid.Row="1" HorizontalAlignment="Right" Background="#FFFF9A1A" Foreground="White" Padding="10" />
+    </Grid>
+</Window>
+

@@ -1,0 +1,40 @@
+﻿<Page x:Class="WPFAutoService.Pages.VisitClient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFAutoService.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Посещения клиентов">
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="{x:Type DataGridRow}">
+                <Style.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFFFFFE1" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                </Style.Resources>
+            </Style>
+            <DataTemplate x:Key="MyCol" >
+                <Border BorderThickness="1" BorderBrush="#888" Margin="5,5,5,5" CornerRadius="5">
+                    <StackPanel Width="auto" Height="auto" Orientation="Horizontal" >
+                        <StackPanel Orientation="Vertical" Height="auto">
+                            <TextBlock Width="auto" HorizontalAlignment="Center" FontSize="14" Margin="10">
+                        <Run Text="{Binding Path=TitleService}"/>
+                            </TextBlock>
+                            <TextBlock Text="{Binding Path=TimeService}" Width="auto" Margin="10,0,10,10"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </DataTemplate>
+        </Grid.Resources>
+        
+        <DataGrid AutoGenerateColumns="False" x:Name="serviceGrid" Grid.Row="1" IsReadOnly="True" GridLinesVisibility="None">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn   CellTemplate="{StaticResource MyCol}" Width="*">
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
